@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// component files
+import EmployeeContainer from './components/EmployeeContainer'
+
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <EmployeeContainer />
+  </React.StrictMode>,  
   document.getElementById('root')
 );
 
