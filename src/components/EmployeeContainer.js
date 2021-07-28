@@ -1,34 +1,51 @@
 import React from "react"
+import EmployeeList from './EmployeeList'
+import Header from './Header'
+
 class EmployeeContainer extends React.Component {
 
     state = {
-        todos: [
+        employees: [
             {
                 id: 1,
-                title: "Setup development environment",
-                completed: true
+                firstName: "Lusungu",
+                middleName: "Emmanuel",
+                lastName: "Chihana",
+                isActive: true
             },
             {
                 id: 2,
-                title: "Develop website and add content",
-                completed: false
+                firstName: "Shalom",
+                middleName: "Luumuno",
+                lastName: "Khatanga",
+                isActive: false
             },
             {
                 id: 3,
-                title: "Deploy to live server",
-                completed: false
+                firstName: "Toweya",
+                middleName: "",
+                lastName: "Chihana",
+                isActive: true
             }
         ]
     };
 
+    handleChange = id => {
+        this.setState({
+            todos: this.state.employees.map(employee => {
+                if (employee.id === id) {
+                    employee.isActive = !employee.isActive;
+                }
+                return employee;
+            })
+        });
+    };
+
     render() {
         return (
-            <div className="fixed inset-0 flex justify-left bg-blue-300 m-5 rounded p-5">
-                <ul className="list-outside md:list-inside list-none md:list-disc">
-                    {this.state.todos.map(todo => (
-                        <li>{todo.title}</li>
-                    ))}
-                </ul>
+            <div className="bg-blue-300 m-5 rounded p-5">
+                <Header />
+                <EmployeeList employees={this.state.employees} handleChangeProps={this.handleChange} />
             </div>
         )
     }
